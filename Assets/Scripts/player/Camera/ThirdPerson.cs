@@ -1,4 +1,3 @@
-using System;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,10 +9,10 @@ public class ThirdPerson : MonoBehaviour
     [SerializeField] private float minZoom = 3f;
     [SerializeField] private float maxZoom = 15f;
 
-    private PlayerControls controls;
-
+    private CinemachineBrain brain;
     private CinemachineCamera cam;
     private CinemachineOrbitalFollow orbital;
+    private CinemachineInputAxisController controller;
     private Vector2 scrollDelta;
 
     private float targetZoom;
@@ -24,22 +23,30 @@ public class ThirdPerson : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        controls = new PlayerControls();
-        controls.Enable();
-        controls.Camera.MouseZoom.performed += HandleMouseScroll;
 
         Cursor.lockState = CursorLockMode.Locked;
-
+        brain = transform.parent.GetComponentInChildren<CinemachineBrain>();
         cam = GetComponent<CinemachineCamera>();
         orbital = cam.GetComponent<CinemachineOrbitalFollow>();
+        controller = cam.GetComponent<CinemachineInputAxisController>();
 
         targetZoom = currentZoom = orbital.Radius;
+        controller.PlayerIndex = GetComponentInParent<PlayerInput>().playerIndex;
+        
+
+        brain.ChannelMask = (OutputChannels)(1 << GetComponentInParent<PlayerInput>().playerIndex+1);
+        cam.OutputChannel = (OutputChannels)(1 << GetComponentInParent<PlayerInput>().playerIndex+1);
     }
 
-    private void HandleMouseScroll(InputAction.CallbackContext context)
+    public void HandleMouseScroll(InputAction.CallbackContext context)
     {
-       scrollDelta = context.ReadValue<Vector2>();
-        Debug.Log($"Mouse is scrolling. Value: {scrollDelta}"); 
+        scrollDelta = context.ReadValue<Vector2>();
+        Debug.Log($"Mouse is scrolling. Value: {scrollDelta}");
+    }
+
+    public void HandleBumper(InputAction.CallbackContext context)
+    {
+        targetZoom = Mathf.Clamp(orbital.Radius - context.ReadValue<float>() * zoomSpeed, minZoom, maxZoom);
     }
 
     // Update is called once per frame
@@ -47,16 +54,11 @@ public class ThirdPerson : MonoBehaviour
     {
         if (scrollDelta.y != 0)
         {
-            if(orbital != null)
+            if (orbital != null)
             {
                 targetZoom = Mathf.Clamp(orbital.Radius - scrollDelta.y * zoomSpeed, minZoom, maxZoom);
                 scrollDelta = Vector2.zero;
             }
-        }
-
-        float bumperDelta = controls.Camera.GamePadZoom.ReadValue<float>();
-        if(bumperDelta != 0) {
-            targetZoom = Mathf.Clamp(orbital.Radius - bumperDelta * zoomSpeed, minZoom, maxZoom);
         }
 
         currentZoom = Mathf.Lerp(currentZoom, targetZoom, Time.deltaTime * zoomLerpSpeed);
