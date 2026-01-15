@@ -34,6 +34,14 @@ public class ThirdPerson : MonoBehaviour
         orbital = cam.GetComponent<CinemachineOrbitalFollow>();
 
         targetZoom = currentZoom = orbital.Radius;
+<<<<<<< HEAD
+=======
+        controller.PlayerIndex = GetComponentInParent<PlayerInput>().playerIndex;
+        
+
+        brain.ChannelMask = (OutputChannels)(1 << GetComponentInParent<PlayerInput>().playerIndex+1);
+        cam.OutputChannel = (OutputChannels)(1 << GetComponentInParent<PlayerInput>().playerIndex+1);
+>>>>>>> parent of da85e66 (it is not working)
     }
 
     private void HandleMouseScroll(InputAction.CallbackContext context)

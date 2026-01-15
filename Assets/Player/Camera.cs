@@ -244,7 +244,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     // Camera
     private readonly InputActionMap m_Camera;
     private List<ICameraActions> m_CameraActionsCallbackInterfaces = new List<ICameraActions>();
-    internal object isGrounded;
     private readonly InputAction m_Camera_MouseZoom;
     private readonly InputAction m_Camera_GamePadZoom;
     /// <summary>

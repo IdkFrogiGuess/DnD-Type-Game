@@ -57,8 +57,6 @@ public class Movement : MonoBehaviour
         Vector3 forward = playerCamera.forward;
         Vector3 right = playerCamera.right;
 
-        InputAction orbitAction = GetComponentInChildren<InputHandler>().horizontal.action;
-
         forward.y = 0;
         right.y = 0;
 
