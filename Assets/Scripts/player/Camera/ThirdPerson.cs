@@ -32,10 +32,10 @@ public class ThirdPerson : MonoBehaviour
 
         targetZoom = currentZoom = orbital.Radius;
         controller.PlayerIndex = GetComponentInParent<PlayerInput>().playerIndex;
-        
+
 
         brain.ChannelMask = (OutputChannels)(1 << GetComponentInParent<PlayerInput>().playerIndex+1);
-        cam.OutputChannel = (OutputChannels)(1 << GetComponentInParent<PlayerInput>().playerIndex+1);
+        cam.OutputChannel = brain.ChannelMask;
     }
 
     public void HandleMouseScroll(InputAction.CallbackContext context)
