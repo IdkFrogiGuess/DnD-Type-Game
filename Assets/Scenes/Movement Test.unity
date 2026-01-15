@@ -334,11 +334,13 @@ Transform:
   m_GameObject: {fileID: 289703751}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.95378923, y: 1.2225254, z: 0.4563551}
+  m_LocalPosition: {x: -0.95378923, y: 6.97, z: 0.4563551}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 54977186}
+  - {fileID: 625541350}
+  - {fileID: 1635323786}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &289703756
@@ -584,12 +586,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 625541346}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212339, y: 0, z: 0, w: 0.98836154}
-  m_LocalPosition: {x: -0.95378923, y: 2.7260544, z: -4.3122296}
+  m_LocalRotation: {x: 0.15212339, y: -0, z: -0, w: 0.98836154}
+  m_LocalPosition: {x: 0, y: 0.90211725, z: -2.8611507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 289703755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1153725843
 GameObject:
@@ -758,7 +760,7 @@ MonoBehaviour:
     RotationDamping: {x: 1, y: 1, z: 1}
     QuaternionDamping: 1
   OrbitStyle: 0
-  Radius: 5
+  Radius: 3
   Orbits:
     Top:
       Radius: 2
@@ -853,11 +855,11 @@ Transform:
   m_GameObject: {fileID: 1635323782}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15212339, y: 0.0000000068776216, z: -0.0000000070130164, w: 0.98836154}
-  m_LocalPosition: {x: -0.95378923, y: 2.7260544, z: -4.3122296}
+  m_LocalPosition: {x: 0, y: 0.90211725, z: -2.8611507}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 289703755}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1635323787
 MonoBehaviour:
@@ -1027,5 +1029,3 @@ SceneRoots:
   - {fileID: 1153725845}
   - {fileID: 1770910325}
   - {fileID: 289703755}
-  - {fileID: 625541350}
-  - {fileID: 1635323786}
