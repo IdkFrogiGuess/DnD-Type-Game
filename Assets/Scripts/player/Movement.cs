@@ -24,12 +24,18 @@ public class Movement : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
+        if (enabled == false)
+            return;
+
         moveInput = context.ReadValue<Vector2>();
         Debug.Log($"Move input: {moveInput}");
     }
 
     public void OnSprint(InputAction.CallbackContext context)
     {
+        if (enabled == false)
+            return;
+
         if (context.performed)
         {
             isSprinting = true;
@@ -42,6 +48,9 @@ public class Movement : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (enabled == false)
+            return;
+
         Debug.Log($"Jumping {context.performed} - Is Grounded: {controls.isGrounded}");
         if (context.performed && controls.isGrounded)
         {
