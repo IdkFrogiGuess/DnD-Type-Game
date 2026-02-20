@@ -243,6 +243,7 @@ GameObject:
   - component: {fileID: 289703757}
   - component: {fileID: 289703758}
   - component: {fileID: 289703759}
+  - component: {fileID: 289703760}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -476,6 +477,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 0c4f8db7-e74c-4f49-924d-070c5b8003a4
     m_ActionName: GamePlay/sprint
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 289703760}
+        m_TargetAssemblyTypeName: toggleView, Assembly-CSharp
+        m_MethodName: VeiwToggle
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 87f4f5d9-af03-4e0e-a191-1928440494e3
+    m_ActionName: GamePlay/viewToggle
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: GamePlay
@@ -524,9 +541,24 @@ MonoBehaviour:
   jumpheight: 2
   gravity: -9.8
   shouldRotateTowardsMovement: 1
-  lookSensitivity: 1e+14
+  lookSensitivity: 200
   invertY: 0
   lockCursor: 1
+--- !u!114 &289703760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289703751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57748cb80cdfd02459697602f3811d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FirstCam: {fileID: 1109682491}
+  ThirdCam: {fileID: 1635323782}
+  Player: {fileID: 289703751}
 --- !u!1 &625541346
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,7 +678,7 @@ Transform:
   m_GameObject: {fileID: 625541346}
   serializedVersion: 2
   m_LocalRotation: {x: 0.15212339, y: 0.0000000059389063, z: -9.140852e-10, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 2.674965, z: -8.4839}
+  m_LocalPosition: {x: 0, y: 0.0030059814, z: -0.00953717}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
